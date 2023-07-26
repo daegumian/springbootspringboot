@@ -1,0 +1,26 @@
+package com.simple.basic;
+
+import javax.activation.DataSource;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.simple.basic.command.BuilderVO;
+import com.simple.basic.command.BuilderVO.Builder;
+
+@SpringBootTest
+public class JDBCTest { //스프링 부트 데스트클래스
+	
+	
+	//빌더 패턴의 확인
+	@Test
+	public void testCode01() {
+			System.out.println(1);
+	}
+	
+		
+		Builder b = BuilderVO.builder();
+		b.age(10);
+ 
+}

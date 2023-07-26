@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<th:block>
+	
+	<div class="wrap">
+		
+	</div>
+	
+</th:block>

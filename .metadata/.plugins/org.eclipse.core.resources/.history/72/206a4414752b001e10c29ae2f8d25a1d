@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	타임리프의 link구문 @{경로 (키=값, 키=값 ...)}
+	<ul>
+		<li th:each="vo : ${list}">
+			<a th:href="@{result(sno=${vo.sno}, first=${vo.first})}">[[${pd.first}]]</a>
+			
+		</li>
+		
+	</ul>
+	
+	<a href="/view/result02/하정우/1">URL파람</a>
+	
+	타임리프 block태그 (중괄호 역할)
+	
+	<ul>
+		<th:block th:each="vo:${list}"
+		
+	</ul>
+	
+	
+	타임리프 자바스크립트에서 참조하기
+	
+	<script>
+		var x = '[[${vo}]]'
+		console.log(x)
+		
+	</script>
+	
+	
+</body>
+</html>

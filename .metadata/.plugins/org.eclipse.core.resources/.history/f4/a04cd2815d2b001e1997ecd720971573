@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="background-color: lightpink;">
+
+	타임리프 기초문법
+	
+	<h3 th:text="${'hello world'}"></h3>
+	<h3>[[${'zzzzzzzzzzzzzzz'}]]</h3>
+	
+	<h3>[[${3==2}]]</h3>
+	<h3>[[${3>5}]]</h3>
+
+	니 마음 찐이니? [[${'가'=='가'}]]
+	<h3>[[${'가' eq '나'}]]</h3>
+
+	<h3>[[${true and true}]]</h3>
+	<h3>[[${true and false}]]</h3>
+	
+	타임리프 변수선언
+	<div th:with="a=10, b=1">
+		나의 점수는? [[${a}]]
+		너의 점수는?[[${b}]]
+	</div>
+	
+	인풋태그의 값 표현
+	<input type="text" value="${'박동훈'}">
+	
+	
+
+</body>
+</html>

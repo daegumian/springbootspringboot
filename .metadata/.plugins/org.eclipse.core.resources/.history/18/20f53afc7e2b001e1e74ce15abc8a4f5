@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<!-- th:replace="~{/경로 :: 함수명(~{~:: id or class})" -->
+<th:block th:replace="~{/include/layout03 :: 함수명( ~{:: #wrap })}">
+	
+	<div class="wrap">
+		템플릿에 전달될 화면
+	</div>
+	
+	<div id="wrap">
+		템플릿에 전달될 화면 id인 경우
+	</div>
+	
+</th:block>
+
+<script>
+	console.log('화면에서 사용할 js는 전달할 코드를 감싸는 태그 바깥에 선언');
+</script>
+
+</html>

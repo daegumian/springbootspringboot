@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body th:fragment="함수명(section1)">
+	
+	
+	<header>
+		헤ㄹ투더...
+	</header>	
+	
+	<section>
+		<th:blokc th:replace="${section1}"></th:blokc>
+	</section>
+	
+	<footer>
+		푸드 파이터..
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	타임리프의 제어문 if문 unless문에서는 동일한 조건을 작성.
+		
+	<div th:with="a = 10">
+		<span th:if="${a == 20}">a는 20이다</span>
+		<span th:unless="${a == 20}">a는 20이 아니다</span><!--else구문이다.-->
+	</div>
+	
+	<hr/>
+	
+	vo의 참조
+	<div th:if="${vo.first == '하정우'}">꺅! 하정우다</div>	
+	<div th:unless="${vo.first == '하정우'}">꺅! 주지훈이다</div>	
+	
+	<hr/>
+	
+	삼항연산자
+	<div>[[${vo.first == '주지훈' ? '주지훈' : '주지훈이 아닙니다'}]]</div>
+	
+	<hr/>
+	
+	타임리프 반복문 (무조건 향상된 for문으로)
+	<ul>
+		<li th:each=" vo : ${list}">
+			[[${vo.sno}]]
+			[[${vo.first}]]
+			[[${vo.regdate}]]
+		</li>
+		
+	</ul>	
+	
+	<hr/>
+	타임리프 반복문 : status변수 (var status랑 같음)
+	<ul>
+		<li th:each=" vo, status : ${list}"> <!--stats에 'list'의 상태값을 넣어줌-->
+			[[${status}]]<br/>
+			인덱스 번호 : [[${status.index}]]<br/>
+			순서번호 : [[${status.count}]]<br/>
+		</li>
+	</ul>
+	
+	<hr/>
+	타임이프 반복문과 if문
+	<ul>
+		<li th:each="vo : ${list}" th:if="${vo.sno % 2 == 0}">
+			짝수만 출력됨 : [[${vo.sno}]]
+			
+		</li>
+	</ul>
+	
+	
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<th:block th:replace="~{/include/layout03 :: 함수()}">
+	
+	<div class="wrap">
+		템플릿에 전달될 화면
+	</div>
+	
+</th:block>

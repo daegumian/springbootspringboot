@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>회원정보 확인</h3>
+	번호 : [[${sno}]] <br/>
+	이름 : [[${name}]]
+	
+	</th:block>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   
+   타임리프의 link구문
+   <ul>
+      <li th:each="vo:${list}">
+         <a th:href="@{result(sno=${vo.sno},first=${vo.first})}">[[${vo.first}]]</a>
+         <a th:href="@{/view/result02/{first}/{sno}(sno=${vo.sno},first=${vo.first})}">URL파람</a>
+      </li>
+   </ul>
+   
+   <a href="/view/result02/홍길동/1">URL파람</a>
+   
+   타임리프 block 태그 (중괄호 역할)
+   
+   <ul>
+      <th:block th:each="vo:${list}">
+         <li>[[${vo.first}]]</li>
+      </th:block>
+   </ul>
+   
+   
+   타임리프 자바스크립트에서 참조하기
+   
+   <script>
+      '${vo}'
+   </script>
+   
+
+
+
+	타임리프 자바스크립트에서 참조하기
+	
+	<script th:inline="javascript">
+		var x = '[[${vo}]]';
+		console.log(JSON.parse(x));
+		
+	</script>
+
+
+
+
+
+
+</body>
+</html>   
