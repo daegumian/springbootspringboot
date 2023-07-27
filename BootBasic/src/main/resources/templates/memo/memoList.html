@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>메모 목록</h3>
+	
+	
+		<table >
+				<tr>
+					<td>번호</td>
+					<td>메모</td>
+					<td>연락처</td>
+					<td>비밀글처리</td>
+				</tr>
+							
+				<tr th:each="vo: ${list}">
+						<td>[[${vo.mno}]]</td>
+					<div th:if="${vo.secret == 'n'}">
+						<td >[[${vo.memo}]]</td>
+						<td>[[${vo.phone}]]</td>
+						<td>[[${vo.secret}]]</td>
+						
+						
+					</div>
+					<div th:unless="${vo.secret == 'n'}">
+						<td>비밀글 처리</td>
+						<td > </td>
+						<td> </td>
+						<td> </td>
+					</div>
+					
+				</tr>
+			
+		</table>
+	
+	<a href="memoWrite">메모쓰기</a>
+</body>
+</html>

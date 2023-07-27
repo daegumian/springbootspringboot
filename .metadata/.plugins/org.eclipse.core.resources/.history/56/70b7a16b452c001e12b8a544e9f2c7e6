@@ -1,0 +1,13 @@
+package com.simple.basic.memo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("memoService")//1번
+public class MemoServiceImpl implements MemoService {
+	
+	//3번
+	@Autowired
+	private MemoMapper memoMapper;
+	
+}

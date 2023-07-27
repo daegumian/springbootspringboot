@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h3>서버 유효성 검사 뷰</h3>
+	
+	<form action="viewForm" method="post">
+		이름: <input type="text" name="name"> <br/>
+		급여:	<input type="text" name="salary"> <br/>
+		전화번호: <input type="text" name="phone"> <br/>
+		이메일: <input type="email" name="email"> <br/>
+		
+		<input type="submit" value="유효성검사">
+	</form>
+	
+	
+</body>
+</html>

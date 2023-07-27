@@ -1,0 +1,10 @@
+package com.simple.basic.command;
+
+public class ValidVO {
+	
+	private String name;
+	private int salary;
+	private String phone;
+	private String email;
+
+}

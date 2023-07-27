@@ -1,0 +1,31 @@
+package com.simple.basic.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.simple.basic.command.ValidVO;
+
+@Controller
+@RequestMapping("/valid")
+public class ValidController {
+	
+	//화면 출력
+	@GetMapping("/valid")
+	public String view() {
+		
+		return "view/valid";
+	}
+	
+	//폼요청
+	@PostMapping("/viewForm")
+	public String viewForm(ValidVO vo) {
+		
+		System.out.println(vo.toString());
+		
+		return "view/result";
+	}
+	
+	
+}

@@ -1,0 +1,10 @@
+package com.simple.basic;
+
+@SpringBootTest
+public class MybatisTest {
+	
+	TestMapper testMapper;
+	
+	public
+
+}

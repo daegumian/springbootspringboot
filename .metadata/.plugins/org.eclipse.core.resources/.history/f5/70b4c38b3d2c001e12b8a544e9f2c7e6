@@ -1,0 +1,16 @@
+package com.simple.basic;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication
+public class MybatisTest {
+	
+	@Autowired
+	TestMapper testMapper;
+	
+	@Test
+	public void testCode01() {
+		System.out.println(testMapper.getTime());
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.simple.basic;
+
+public class MybatisTest {
+	
+	public void testCode01() {
+		System.out.println(testMapper.getTime());
+	}
+
+}

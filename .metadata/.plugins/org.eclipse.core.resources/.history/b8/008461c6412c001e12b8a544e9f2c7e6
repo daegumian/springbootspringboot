@@ -1,0 +1,27 @@
+package com.simple.basic.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/memo")
+public class MemoController {
+	
+	
+	//메모 목록
+	@GetMapping("/memoList")
+	public String memoList() {
+		
+		return "memo/memoList";
+	}
+	
+	//글쓰기 화면
+	@GetMapping("/memoWrite")
+	public String memoWrite() {
+		
+		
+		return "memo/memoWrite";
+	}
+
+}

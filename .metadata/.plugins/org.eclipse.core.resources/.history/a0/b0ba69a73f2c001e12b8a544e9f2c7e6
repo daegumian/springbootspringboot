@@ -1,0 +1,6 @@
+package com.simple.basic;
+
+public interface TestMapper {
+	
+	
+}

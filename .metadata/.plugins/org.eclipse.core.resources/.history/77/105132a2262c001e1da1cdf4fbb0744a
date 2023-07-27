@@ -1,0 +1,8 @@
+package com.simple.basic.command;
+
+public class MemberVO {
+	
+	private String id;
+	private String pw;
+
+}

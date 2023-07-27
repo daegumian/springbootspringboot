@@ -1,0 +1,11 @@
+package com.simple.basic.command;
+
+public class MemoVO {
+	
+	private String memo;
+	private String phone;
+	private String pw;
+	
+	public MemoVO() {}
+
+}

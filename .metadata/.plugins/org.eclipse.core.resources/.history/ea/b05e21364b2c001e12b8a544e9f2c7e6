@@ -1,0 +1,21 @@
+package com.simple.basic.memo.service;
+
+import java.util.ArrayList;
+
+import com.simple.basic.command.MemoVO;
+
+public class MemoMapperImpl implements MemoMapper {
+
+	@Override
+	public void MemoRegist(MemoVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ArrayList<MemoVO> getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

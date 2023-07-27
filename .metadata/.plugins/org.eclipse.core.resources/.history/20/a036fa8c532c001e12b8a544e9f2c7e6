@@ -1,0 +1,35 @@
+package com.simple.basic.command;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class MemoVO {
+	
+	@NotBlank
+	private String mno;
+	
+	@NotBlank
+	@Pattern(message="메모는 5글자 이상입니다.", regexp = "[a-zA-Z0-9]{5,}")
+	private String memo;
+	
+	@NotBlank
+	private String phone;
+	
+	@NotBlank
+	@Pattern(message="비밀번호는 4자리수 입니다.", regexp="^\\d{4}$")
+	private String pw;
+	
+	@NotBlank
+	private String secret;
+	
+
+}

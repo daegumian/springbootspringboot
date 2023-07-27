@@ -1,0 +1,20 @@
+package com.simple.basic.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+public class MemoController {
+	
+	@GetMapping("/memoList")
+	public String memoList() {
+		
+		return "memo/memoList";
+	}
+	
+	@GetMapping("/memoWrite")
+	public String memoWrite() {
+		
+		
+		return "memo/memoWrite";
+	}
+
+}

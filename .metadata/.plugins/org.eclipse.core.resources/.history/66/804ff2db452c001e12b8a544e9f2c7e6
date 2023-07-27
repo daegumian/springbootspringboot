@@ -1,0 +1,27 @@
+package com.simple.basic.memo.service;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.simple.basic.command.MemoVO;
+
+@Service("memoService")//1번
+public class MemoServiceImpl implements MemoService {
+	
+	//3번
+	@Autowired
+	private MemoMapper memoMapper;
+
+	@Override
+	public void MemoRegist(MemoVO vo) {
+	}
+
+	@Override
+	public ArrayList<MemoVO> getList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

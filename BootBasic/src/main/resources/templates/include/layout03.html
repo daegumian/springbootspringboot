@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org">
+<th:block th:fragment="함수명(section1)">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body th:fragment="함수명(section1)">
+<body>
 	
 	
 	<header>
 		<h3>이거는 템플릿 파일</h3>
 		헤피투게더...
-	</header>	
+	</header>
+	<hr/>	
 	
 	<section>
 		<th:blokc th:replace="${section1}"></th:blokc>
 	</section>
 	
+	<hr/>
 	<footer>
 		푸드 파이터..
 	</footer>
 
 </body>
+
+</th:block>
 </html>

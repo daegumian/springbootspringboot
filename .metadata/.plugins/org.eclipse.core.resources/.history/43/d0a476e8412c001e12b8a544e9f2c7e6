@@ -1,0 +1,8 @@
+package com.simple.basic.memo.service;
+
+import org.springframework.stereotype.Service;
+
+@Service("memoService")
+public class MemoServiceImpl {
+
+}

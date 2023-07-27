@@ -1,0 +1,21 @@
+package com.simple.basic.command;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
+public class ValidVO {
+	
+	private String name;
+	private Integer salary; //왜 int보다 Integer가 좋냐? 기본값으로 null을 주기 때문
+	private String phone;
+	private String email;
+	
+	
+
+}
