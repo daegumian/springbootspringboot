@@ -1,0 +1,6 @@
+CREATE TABLE topic(
+   num int primary key auto_increment, 
+   name varchar(30) not null,
+   kor varchar(30),
+    eng varchar(30)
+);

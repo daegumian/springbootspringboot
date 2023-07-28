@@ -1,5 +1,4 @@
 package com.simple.basic.memo.service;
-
 import java.util.ArrayList;
 
 import com.simple.basic.command.MemoVO;
