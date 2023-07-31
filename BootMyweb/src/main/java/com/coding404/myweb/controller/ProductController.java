@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.coding404.myweb.command.ProductVO;
 import com.coding404.myweb.product.service.ProductService;
+import com.coding404.myweb.util.Criteria;
+import com.coding404.myweb.util.PageVO;
 
 @Controller
 @RequestMapping("/product")
@@ -26,14 +28,27 @@ public class ProductController {
 
 
 	@GetMapping("/productList")
-	public String list(Model model) {
+	public String list(Model model, Criteria cri) {
 
 		//로그인 기능이 없으므로, admin이라는 계정기반으로 조회
 		String writer = "admin";
+		
+		//1st
+//		ArrayList<ProductVO> list = productService.getList(writer);
+//		model.addAttribute("list", list);
 
-		ArrayList<ProductVO> list = productService.getList(writer);
+		//2nd
+		ArrayList<ProductVO> list = productService.getList(writer, cri);
 		model.addAttribute("list", list);
-
+		
+		int total = productService.getTotal(writer, cri);
+		PageVO pageVO = new PageVO(cri, total );
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pageVO", pageVO);
+		
+		System.out.println(pageVO.toString());
+		
 		return "product/productList";
 	}
 
@@ -104,11 +119,10 @@ public class ProductController {
 		
 		return "redirect:/product/productList";
 		
-		
-		
-		
 	}
 
+	
+	
 
 
 

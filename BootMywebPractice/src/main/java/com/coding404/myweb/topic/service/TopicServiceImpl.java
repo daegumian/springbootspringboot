@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.coding404.myweb.command.TopicVO;
 
-@Service("/topicService")
+@Service("topicService")
 public class TopicServiceImpl implements TopicService{
 
 	@Autowired

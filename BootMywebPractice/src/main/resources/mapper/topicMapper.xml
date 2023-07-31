@@ -5,7 +5,21 @@
 
 <mapper namespace="com.coding404.myweb.product.service.ProductMapper">
 
+<insert id="topicReg" parameterType="TopicVO">
+	insert into topic (top_regdate,
+					   top_writer,
+					   top_id,
+					   top_title,
+					   top_content
+						)
+	values (#{top_regdate},
+			#{top_writer},
+			#{top_id},
+			#{top_title},
+			#{top_content},
+			)
 
+</insert>
 
 
 

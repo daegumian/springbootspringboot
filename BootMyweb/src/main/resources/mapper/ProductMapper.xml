@@ -26,9 +26,63 @@
                 #{prod_comment})
     </insert>
 
+	<!-- 
+	동적쿼리 if, choose, foreach 문장
+	동적쿼리절에는 vo의 getter or map key가 전달됨
+	 -->
     <select id="getList" resultType="ProductVO">
-        SELECT * FROM product WHERE prod_writer = #{writer}
+        select *
+        from product
+        where prod_writer = #{writer}
+        
+        <if test = "cri.searchName != '' and cri.searchName != null ">
+        	and prod_name like concat('%',#{cri.searchName},'%')
+        </if>
+        <if test = "cri.searchContent != '' and cri.searchContent != null ">
+			and prod_content like concat('%', #{cri.searchContent}, '%')
+        </if>
+        <if test = "cri.startDate != '' and cri.startDate != null ">
+		<!-- 부등호가 있으면 [CDATA[]]로 감싸주는게 좋다 -->
+		<![CDATA[and prod_enddate >= #{cri.startDate}]]>
+        </if>
+        <if test = "cri.endDate != '' and cri.endDate != null ">
+		<!-- 부등호가 있으면 [CDATA[]]로 감싸주는게 좋다 -->
+		<![CDATA[and prod_enddate <= #{cri.endDate}]]>
+        </if>
+        
+        order by 
+        <if test="cri.searchPrice == 'asc' ">
+        	prod_price asc,
+        </if>
+        <if test="cri.searchPrice == 'desc' ">
+        	prod_price desc,
+        </if>
+        
+        prod_id desc
+        limit #{cri.pageStart}, #{cri.amount} <!--게터 문구 다시 생각 -->
+        
     </select>
+    
+    <select id = "getTotal" resultType="int">
+    	select count(*) as total
+    	from product
+    	where prod_writer = #{writer}
+    	<if test = "cri.searchName != '' and cri.searchName != null ">
+        	and prod_name like concat('%',#{cri.searchName},'%')
+        </if>
+        <if test = "cri.searchContent != '' and cri.searchContent != null ">
+			and prod_content like concat('%', #{cri.searchContent}, '%')
+        </if>
+        <if test = "cri.startDate != '' and cri.startDate != null ">
+		<!-- 부등호가 있으면 [CDATA[]]로 감싸주는게 좋다 -->
+		<![CDATA[and prod_enddate >= #{cri.startDate}]]>
+        </if>
+        <if test = "cri.endDate != '' and cri.endDate != null ">
+		<!-- 부등호가 있으면 [CDATA[]]로 감싸주는게 좋다 -->
+		<![CDATA[and prod_enddate <= #{cri.endDate}]]>
+        </if>
+    </select>
+    
 
     <select id="getDetail" resultType="ProductVO">
         SELECT * FROM product WHERE prod_id = #{prod_id}

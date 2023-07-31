@@ -12,3 +12,57 @@ CREATE TABLE PRODUCT(
     PROD_CONTENT VARCHAR(5000), 		##내용
     PROD_COMMENT VARCHAR(5000)		##메모
 );
+
+페이지 쿼리문
+
+#오라클
+select * from product;
+
+# mysql subquery
+
+select *
+from (
+		select @rownum := @rownum + 1 as rn, 
+	   a.*
+		from (
+		select * 
+		from product
+        where prod_writer = 'admin'
+        order by prod_id desc
+		) as a, (select @rownum := 0) as b#rownum 해주는 역할
+) as c
+where rn > 0 and rn <= 10;
+
+
+# mysql limit
+select * from product 
+-- where prod_writer = 'admin' 
+order by prod_id desc
+limit 0,20; #앞의 값은 데이터의 시작값, 뒤의 값은 데이터 수
+
+
+<div class="page">
+											<ul>
+												<li><a th:href="@{productList(page=1, amount=${pageVO.amount})}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+												
+												<!-- 2.이전버튼 활성화 여부 -->
+												<th:block th:if="${pageVO.prev}">
+												<li style="margin-right:5px;">
+													<a th:href="@{productList(page=${pageVO.start-1}, amount=${pageVO.amount})}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+												</th:block>
+												
+												<!-- 1.페이지 반복-->
+												<th:block th:each="page : ${pageVO.pageList } ">
+												<li th:class="${page == pageVO.page ? 'on' : ''}">
+													<a th:href="@{productList(page=${page}, amount=${pageVO.amount} ) }">[[${page}]]</a></li>
+												</th:block>
+												
+												<!-- 3.다음버튼 활성화 여부 -->
+												<th:block th:if="${pageVO.next}">
+													<li style="margin-left:5px;">
+														<a th:href="@{productList(page=${pageVO.end + 1}, amount=${pageVO.amount})}"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+												</th:block>
+												
+												<li><a th:href="@{productList(page=${pageVO.realEnd}, amount=${pageVO.amount})}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
