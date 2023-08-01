@@ -7,6 +7,98 @@
 <body>
 	
 	타임리프 뷰
+	
+	<button id="getData">겟방식</button>
+	
+	<button id="getJSON">포스트방식</button>
+	
+	<button id="getData2">실습1</button>
+	<button id="getInfo">실습2</button>
+	<button id="getFetch">쌤1</button>
+	<button id="getFetch2">쌤2</button>
+	
+	<script>
+		
+		//보내는 곳 = 요청 = 클라이언트
+		let getData = document.getElementById("getData");
+		getData.onclick = () =>{
+		
+			fetch("/getData?sno=1&first=홍길동")
+			.then( (response) =>  response.json())
+			.then( t => console.log(t));
+		}
+		
+		/////////////
+		//보내는 곳 = 요청 = 클라이언트
+		let getJSON = document.getElementById("getJSON");
+		getJSON.onclick = () => {
+		
+			fetch("/getJSON", {
+				method: "post",
+				headers: {
+					"content-type" : "application/json"
+				},
+				body : JSON.stringify({"sno": "1","first":"박","last":"리애"})
+				})
+				.then(response => response.json())
+				.then(t => console.log(t))				
+				}
+		
+		/////////////
+		
+		//나
+		//보내는 곳 = 요청 = 클라이언트
+		let getData2 = document.getElementById("getData2");
+		getData2.onclick = () => {
+			
+			fetch("/api/v1/getData2?num=1&name=동훈")
+			.then( (response) => response.json() )
+			.then( t => console.log(t));
+			
+		}
+		//쌤
+		let getFetch = document.getElementById("getFetch");
+		getFetch.onclick = () => {
+			
+			fetch("/api/v1/getData3?num2=1&name2=동훈")
+			.then( (response) => response.json() )
+			.then( t => console.log(t));
+			
+		}
+		
+		//나
+		//보내는 곳 = 요청 = 클라이언트
+		let getInfo = document.getElementById("getInfo");
+		getInfo.onclick = () => {
+			
+			fetch("/api/v1/getInfo",{
+				method:"post",
+				headers:{
+					"content-type" : "application/json"
+				},
+				body: JSON.stringify({"num":"1","name":"동훈"})
+				})
+				.then(response => response.json())
+				.then(t => console.log(t))
+				}
+		
+		//쌤
+		let getFetch2 = document.getElementById("getFetch2");
+		getFetch2.onclick = () => {
+			
+			fetch("/api/v1/getInfo",{
+				method:"post",
+				headers:{
+					"content-type" : "application/json"
+				},
+				body: JSON.stringify({"num":"2","name":"박지욱"})
+				})
+				.then( response => response.json() )
+				.then(t => console.log(t));
+		}
+		
+	</script>
+	
 
 </body>
 </html>
