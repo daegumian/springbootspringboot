@@ -20,13 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.simple.basic.command.SimpleVO;
  
-@RestController //@ResponseBody + @Controller
+@RestController //@ResponseBody + @Controller 서버쪽
 public class RestBasicController {
 	
 	@GetMapping("/basic")
 	public String basic() {
 		return "<h3>hello world<h3>";
 	}
+	
+	//아래는 서버에서 클라이언트로 데이터를 보내는 방법이란 말이다.
 	
 	//데이터를 보내는 방법 => @ResponseBody = 자바의 객체를 JSON형식으로 자동 변환
 	@GetMapping("/getObject")
@@ -56,10 +58,11 @@ public class RestBasicController {
 		return list;
 	}
 	
-	//데이터 받는방법////////////////////////////////////////////////////
-	//get => 주소에 쿼리스트링 or 쿼리파라미터 이용해서 넘겨줌
+	//클라이언트에서 서버로 데이터 받는방법////////////////////////////////////////////////////
+	//get => 주소에 쿼리스트링 or 쿼리파라미터 이용해서 넘겨줌, 키=값 형태로 ex) /getData?sno=1&first=박동훈
 	//post => 폼형식 or json을 이용해서 body에 담아서 넘김
 	
+	//get방식
 	@GetMapping("getData")
 	public SimpleVO getData(SimpleVO vo) {
 		
