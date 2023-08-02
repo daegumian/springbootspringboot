@@ -143,7 +143,7 @@ public class RestBasicController {
 		//ResponseEntity<SimpleVO> result = new ResponseEntity<>(vo, HttpStatus.OK);
 		
 		//2nd
-		//헤더에 대한 내용정의
+		//헤더에 대한 내용정의가 있다면 이렇게 추가할 수 있다.
 		HttpHeaders header = new HttpHeaders();
 		header.add("Authorization", "JSON WEB TOKEN~");
 		header.add("Content-Type", "application/json");
@@ -165,7 +165,7 @@ public class RestBasicController {
 	 */
 	
 	
-	
+	@CrossOrigin("http://127.0.0.1:5500")
 	@GetMapping("/api/v1/getData2")
 	public SimpleVO getData(@RequestParam("num") int sno,
 			 				@RequestParam("name") String first) {
@@ -197,12 +197,12 @@ public class RestBasicController {
 	 * 요청주소 : /api/v1/getInfo
 	 * 메서드:post
 	 * 클라이언트에서 보낼데이터 : num, name -> 웹에서 보내는 요청
-	 * 서버에서 보낼데이터는 : 리스트<SimpleVO> -> 자바에서 처리해서 주는
+	 * 서버에서 보낼데이터는 : List<SimpleVO> -> 자바에서 처리해서 주는
 	 * 받을 수 있는 restAPI를 생성
 	 * 반드시 ResponseEntity로 응답 // 클라이언트 요청, 서버에서 응답
 	 */
 	
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://127.0.0.1:5500")
 //	@CrossOrigin("*")
 	@PostMapping("/api/v1/getInfo")
 	public ResponseEntity<List<SimpleVO>> getInfo() {
@@ -214,6 +214,9 @@ public class RestBasicController {
 		header.add("Content-Type", "application/json");
 		
 		ResponseEntity<List<SimpleVO>> result = new ResponseEntity<List<SimpleVO>>(list, header, HttpStatus.OK);
+		
+		
+		System.out.println(1111);
 		
 		return result;
 	}
