@@ -147,25 +147,17 @@
 												<th>등록일</th>
 											</tr>
 												
-											<tr>
-												<td>1</td>
-												<td>admin</td>
-												<td>오늘은 해가뜨려나?</td>
+											<tr th:each="vo: ${list}">
+												<td>[[${vo.top_num}]]</td>
+												<td>[[${vo.top_id}]]</td>
+												<td>[[${vo.top_title}]]</td>
 												<td>
-													<a title="상세보기(클릭)" href="#">오늘은 비가오려나?</a>
+													<a title="상세보기(클릭)" href="#">[[${vo.top_content}]]</a>
 												</td>
-												<td>2016-01-01</td>
+												<td>[[${vo.top_regdate}]]</td>
 											</tr>
 
-                                            <tr>
-												<td>1</td>
-												<td>coding404</td>
-												<td>안녕하세요!</td>
-												<td>
-													<a title="상세보기(클릭)" href="#">오늘은 해가뜬데요.</a>
-												</td>
-												<td>2016-01-01</td>
-											</tr>
+                                           
 										</table>
 
 
