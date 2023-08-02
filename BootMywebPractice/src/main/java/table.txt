@@ -1,6 +1,12 @@
 CREATE TABLE topic(
-   num int primary key auto_increment, 
-   name varchar(30) not null,
-   kor varchar(30),
-    eng varchar(30)
+   top_num int primary key auto_increment, 
+   top_regdate varchar(100),
+   top_id varchar(100),
+	top_title varchar(1000),
+    top_content varchar(5000)
 );
+
+select * from topic;
+
+commit;
+
