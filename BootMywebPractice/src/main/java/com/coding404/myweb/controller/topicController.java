@@ -3,56 +3,47 @@ package com.coding404.myweb.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.coding404.myweb.topic.service.TopicService;
+import com.coding404.myweb.command.TopicVO;
+import com.coding404.myweb.service.TopicService;
 
 @Controller
 @RequestMapping("/topic")
-public class topicController {
+public class TopicController {
 	
 	@Autowired
 	@Qualifier("topicService")
-	TopicService topicService;
+	private TopicService topicService;
 	
-	
-	//리스트 모든 화면
+	//전체 목록 화면
 	@RequestMapping("/topicListAll")
-	public String topicList() {
+	public String topicListAll() {
+		
 		
 		return "topic/topicListAll";
 	}
 	
-	//리스트 나의 화면
-	@RequestMapping("/topicListMe")
-	public String topicListMe() {
+	//등록 요청
+	@PostMapping("/topicRegForm")
+	public String topicRegForm(TopicVO vo) {
 		
-		return "topic/topicListMe";
+		
+		int result = topicService.topicReg(vo);
+		System.out.println(vo.getClass());
+		System.out.println(result);
+		System.out.println(vo.toString());
+		
+		
+		return "topic/topicListAll";
 	}
 	
-	//게시글 등록
+	//등록 화면
 	@RequestMapping("/topicReg")
 	public String topicReg() {
 		
 		return "topic/topicReg";
 	}
-
-	//게시글 수정
-	@RequestMapping("/topicModify")
-	public String topicModify() {
-		
-		return "topic/topicModify";
-	}
-	
-	//게시글 디테일
-	@RequestMapping("/topicDetail")
-	public String topicDetail() {
-		
-		return "topic/topicDetail";
-	}
-	
-	
-	
-	
 
 }
