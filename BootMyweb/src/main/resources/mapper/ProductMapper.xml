@@ -35,21 +35,21 @@
     <select id="getList" resultType="ProductVO">
        
 	 select a.*,
-	   b.category_nav
-		from product a
-		left join (SELECT CONCAT(A1.GROUP_ID, A1.CATEGORY_ID) AS CATEGORY_KEY,
-		       CASE A1.CATEGORY_PARENT_LV
-					WHEN 0 THEN A1.CATEGORY_DETAIL_NM
-		            WHEN 1 THEN CONCAT(A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
-		            WHEN 2 THEN CONCAT(A3.CATEGORY_DETAIL_NM, '>', A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
-		       END AS category_nav
-		FROM product_category A1
-		LEFT JOIN product_category A2
-		ON A1.CATEGORY_PARENT_LV = A2.CATEGORY_LV AND A1.CATEGORY_DETAIL_PARENT_LV = A2.CATEGORY_DETAIL_LV AND A1.GROUP_ID = A2.GROUP_ID
-		LEFT JOIN product_category A3
-		ON A2.CATEGORY_PARENT_LV = A3.CATEGORY_LV AND A2.CATEGORY_DETAIL_PARENT_LV = A3.CATEGORY_DETAIL_LV) b
-		on a.PROD_CATEGORY = b.CATEGORY_KEY
-        where prod_writer = #{writer}
+	    	b.category_nav
+	 from product a
+	 left join (SELECT CONCAT(A1.GROUP_ID, A1.CATEGORY_ID) AS CATEGORY_KEY,
+					   CASE A1.CATEGORY_PARENT_LV
+									WHEN 0 THEN A1.CATEGORY_DETAIL_NM
+						            WHEN 1 THEN CONCAT(A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
+						            WHEN 2 THEN CONCAT(A3.CATEGORY_DETAIL_NM, '>', A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
+					   END AS category_nav
+	 FROM product_category A1
+	 LEFT JOIN product_category A2
+	 ON A1.CATEGORY_PARENT_LV = A2.CATEGORY_LV AND A1.CATEGORY_DETAIL_PARENT_LV = A2.CATEGORY_DETAIL_LV AND A1.GROUP_ID = A2.GROUP_ID
+	 LEFT JOIN product_category A3
+	 ON A2.CATEGORY_PARENT_LV = A3.CATEGORY_LV AND A2.CATEGORY_DETAIL_PARENT_LV = A3.CATEGORY_DETAIL_LV) b
+	 on a.PROD_CATEGORY = b.CATEGORY_KEY
+     where prod_writer = #{writer}
         
         <if test = "cri.searchName != '' and cri.searchName != null ">
         	and prod_name like concat('%',#{cri.searchName},'%')
@@ -102,7 +102,9 @@
 
     <select id="getDetail" resultType="ProductVO">
         SELECT * 
+        
         FROM product a
+		
 		left join (SELECT CONCAT(A1.GROUP_ID, A1.CATEGORY_ID) AS CATEGORY_KEY,
 		       CASE A1.CATEGORY_PARENT_LV
 					WHEN 0 THEN A1.CATEGORY_DETAIL_NM
@@ -115,7 +117,6 @@
 		LEFT JOIN product_category A3
 		ON A2.CATEGORY_PARENT_LV = A3.CATEGORY_LV AND A2.CATEGORY_DETAIL_PARENT_LV = A3.CATEGORY_DETAIL_LV) b
 		on a.PROD_CATEGORY = b.CATEGORY_KEY
-        
         
         WHERE prod_id = #{prod_id}
     </select>
@@ -148,9 +149,10 @@
     <!-- 2단,3단 가져올 때 sql문 -->
     
     <select id="getCategoryChild" resultType="CategoryVO">
+    
     	select *
     	from product_category
-    	where group_id = #{group_id} <!-- #{group_id}는 게터명만 쓴 것 -->
+    	where group_id = #{group_id} <!-- 깨알 #{group_id}는 게터명만 쓴 것 -->
     	and category_parent_lv = #{category_lv}
     	and category_detail_parent_lv = #{category_detail_lv}
     	
