@@ -106,7 +106,7 @@ function getCategory_List(e) {
 	
 		console.log(obj);
 		
-		$.ajax({
+		$.ajax({ //클라이언트가 선택한 값들을 ajax get방식을 이용해서 컨트롤러로 보내서 메서드를 이용해 DB에 간다음 해당하는 값을 찾아서 다시 컨트롤러를 타고 화면으로 보내준다.
 			url: '../getCategoryChild/' + obj.group_id + '/' + obj.category_lv + '/' + obj.category_detail_lv, //pathVariable방식
 			data: 'get',
 			//data : ~~~
