@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.coding404.myweb.command.CategoryVO;
 import com.coding404.myweb.command.ProductVO;
 import com.coding404.myweb.util.Criteria;
 
-@Mapper
+@Mapper //이거 매퍼야
 public interface ProductMapper {
 	
 	//마이바티스는 매개변수를 하나만 가질 수 있다.
@@ -24,4 +25,10 @@ public interface ProductMapper {
 	public ProductVO getDetail(int prod_id);
 	public int productUpdate(ProductVO vo);//수정
 	public void productDelete(int prod_id); //삭제
+	
+	//카테고리 처리
+	public ArrayList<CategoryVO> getCategory(); //처음가져올 때
+	public ArrayList<CategoryVO> getCategoryChild(CategoryVO vo); //2단 3단 가져올때
+	
+	
 }

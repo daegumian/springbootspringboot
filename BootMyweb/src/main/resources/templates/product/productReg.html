@@ -266,4 +266,50 @@
 
 </th:block>
 
+<script>
+	
+	//페이지가 로드된 이후에 getCategory를 호출
+	$(document).ready(function(){
+		
+		$.ajax({
+			url: '../getCategory',
+			tpye: 'get',
+			//data:~~
+			success:function(data){
+				console.log(data);
+				
+				var category01 = "";
+					
+					//태그 생성
+					category01 += '<ul class="categoryList" style="position: relative;" onclick="getCategory_List(event);" >'
+					
+					data.forEach(function(item){
+					//화면에 데이터값 저장 => 다음 선택시 어떤 데이터를 불러올지 알아야하기 때문에	
+                    category01 += '<li><a href="#" data-set=' + JSON.stringify(item) + '>' + item.category_detail_nm + '</a></li>'
+						
+					})
+						
+                	category01 += '</ul>';
+				
+				//아래에 추가 - appendChild()
+				$(".categoryListWrap").html(category01);
+				
+				
+			},
+			error: function(status, err){
+				alert("카테고리 조회에 문제가 발생했습니다. 관리자에게 문의해주세요.");
+			}
+			
+		})
+		
+		
+		
+	})
+	
+	
+	
+	
+	
+</script>
+
 </html>
