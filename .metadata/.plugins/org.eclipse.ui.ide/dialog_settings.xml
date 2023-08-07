@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="installedFeatures">
-		<item value="org.codehaus.groovy.eclipse.feature:5.0.0.v202306301519-e2306"/>
-		<item value="org.codehaus.groovy30.feature:5.0.0.v202306301519-e2306"/>
-		<item value="org.codehaus.groovy40.feature:5.0.0.v202306301519-e2306"/>
 		<item value="org.eclipse.buildship:3.1.7.v20230428-1350"/>
 		<item value="org.eclipse.egit.gitflow.feature:6.6.0.202305301015-r"/>
 		<item value="org.eclipse.egit:6.6.0.202305301015-r"/>
@@ -65,10 +62,20 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\user\Desktop\course\springboot\project\armytiger"/>
+			<item value="C:\Users\user\Desktop\course\springboot\ArmyTiger"/>
 			<item value="C:\Users\USER\Desktop\work\springboot\work"/>
 			<item value="C:\Users\user\Desktop\course\springboot\work"/>
 			<item value="C:\Users\USER\Desktop\work\springboot\work\BootMyweb"/>
 			<item value="C:\Users\USER\Desktop\work\springboot\work\BootBasic"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="366"/>
+		<item key="DIALOG_Y_ORIGIN" value="293"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
 </section>

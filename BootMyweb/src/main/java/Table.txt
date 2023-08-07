@@ -1,3 +1,113 @@
+CREATE TABLE SCORE(
+   num int primary key auto_increment, 
+   name varchar(30) not null,
+   kor varchar(30),
+    eng varchar(30)
+);
+
+SELECT * FROM SCORE;
+INSERT INTO SCORE(NAME, KOR, ENG) VALUES('홍길동', '100', '100');
+INSERT INTO SCORE(NAME, KOR, ENG) VALUES('홍길동', '130', '100');
+
+
+UPDATE SCORE SET KOR = '120' WHERE NUM = 1;
+
+DELETE FROM SCORE WHERE NUM = 1;
+
+commit;
+
+
+CREATE TABLE board(
+   num int primary key auto_increment, 
+   name varchar(30) not null,
+   kor varchar(30),
+    eng varchar(30)
+);
+
+
+CREATE TABLE MEMO(
+	MNO INT PRIMARY KEY AUTO_INCREMENT,
+	MEMO VARCHAR(200) NOT NULL,
+	PHONE VARCHAR(30),
+	PW VARCHAR(4),
+	SECRET CHAR(1) CHECK(SECRET IN ('y', 'n'))
+);
+
+commit;
+
+select * from product ;
+
+DELETE FROM memo WHERE mno = 7;
+
+
+
+
+CREATE TABLE PRODUCT(
+    PROD_ID INT PRIMARY KEY AUTO_INCREMENT, 	## PK (자동증가값)
+    PROD_REGDATE TIMESTAMP DEFAULT NOW(), 	## 등록일 (기본값 시간형)
+    PROD_ENDDATE VARCHAR(20),		## 판매종료일 (문자형 시간)
+    PROD_CATEGORY VARCHAR(20),		## 카테고리 키
+    PROD_WRITER VARCHAR(20),		## 작성자 FK
+    PROD_NAME VARCHAR(300),  		## 상품명
+    PROD_PRICE INT NOT NULL, 		## 가격
+    PROD_COUNT INT NOT NULL, 		## 재고
+    PROD_DISCOUNT INT DEFAULT 0, 		## 할인율 (기본값 숫자 0)
+    PROD_PURCHASE_YN CHAR(1) DEFAULT 'N' CHECK (PROD_PURCHASE_YN IN ('Y', 'N')), ##체크제약
+    PROD_CONTENT VARCHAR(5000), 		##내용
+     PROD_COMMENT VARCHAR(5000)		##메모
+);
+
+select * from product;
+
+update product 
+    set prod_writer = 'admin'
+where prod_id = 2;
+
+select * from product;
+
+# mysql subquery
+
+select *
+from (
+		select @rownum := @rownum + 1 as rn, 
+	   a.*
+		from (
+		select * 
+		from product
+        where prod_writer = 'admin'
+        order by prod_id desc
+		) as a, (select @rownum := 0) as b#rownum 해주는 역할
+) as c
+where rn > 0 and rn <= 10;
+
+
+# mysql limit
+select * from product 
+where prod_writer = 'admin'
+and prod_name like concat('%','test','%')
+and prod_content like concat('%', '1', '%')
+and prod_enddate >= '2023-07-22'
+and prod_enddate <= '2023-07-31'
+#order by prod_price desc;
+order by prod_id desc;
+#limit 0,20; #앞의 값은 데이터의 시작값, 뒤의 값은 데이터 수
+
+select str_to_date('2023-07-31', '%Y-%m-%d');
+
+select count(*)
+from product
+where prod_writer = 'admin';
+
+
+CREATE TABLE topic(
+   top_num int primary key auto_increment, 
+   top_regdate TIMESTAMP DEFAULT NOW(),
+   top_id varchar(30),
+    top_title varchar(100),
+    top_content varchar(5000)
+);
+
+
 CREATE TABLE PRODUCT(
     PROD_ID INT PRIMARY KEY AUTO_INCREMENT, 	## PK (자동증가값)
     PROD_REGDATE TIMESTAMP DEFAULT NOW(), 	## 등록일 (기본값 시간형)
@@ -42,27 +152,52 @@ limit 0,20; #앞의 값은 데이터의 시작값, 뒤의 값은 데이터 수
 
 
 <div class="page">
-											<ul>
-												<li><a th:href="@{productList(page=1, amount=${pageVO.amount})}"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
-												
-												<!-- 2.이전버튼 활성화 여부 -->
-												<th:block th:if="${pageVO.prev}">
-												<li style="margin-right:5px;">
-													<a th:href="@{productList(page=${pageVO.start-1}, amount=${pageVO.amount})}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-												</th:block>
-												
-												<!-- 1.페이지 반복-->
-												<th:block th:each="page : ${pageVO.pageList } ">
-												<li th:class="${page == pageVO.page ? 'on' : ''}">
-													<a th:href="@{productList(page=${page}, amount=${pageVO.amount} ) }">[[${page}]]</a></li>
-												</th:block>
-												
-												<!-- 3.다음버튼 활성화 여부 -->
-												<th:block th:if="${pageVO.next}">
-													<li style="margin-left:5px;">
-														<a th:href="@{productList(page=${pageVO.end + 1}, amount=${pageVO.amount})}"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-												</th:block>
-												
-												<li><a th:href="@{productList(page=${pageVO.realEnd}, amount=${pageVO.amount})}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
-											</ul>
-										</div>
+
+-- 
+select a.*,
+	   b.category_nav
+from product a
+left join (SELECT CONCAT(A1.GROUP_ID, A1.CATEGORY_ID) AS CATEGORY_KEY,
+       CASE A1.CATEGORY_PARENT_LV
+			WHEN 0 THEN A1.CATEGORY_DETAIL_NM
+            WHEN 1 THEN CONCAT(A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
+            WHEN 2 THEN CONCAT(A3.CATEGORY_DETAIL_NM, '>', A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
+       END AS category_nav
+FROM product_category A1
+LEFT JOIN product_category A2
+ON A1.CATEGORY_PARENT_LV = A2.CATEGORY_LV AND A1.CATEGORY_DETAIL_PARENT_LV = A2.CATEGORY_DETAIL_LV AND A1.GROUP_ID = A2.GROUP_ID
+LEFT JOIN product_category A3
+ON A2.CATEGORY_PARENT_LV = A3.CATEGORY_LV AND A2.CATEGORY_DETAIL_PARENT_LV = A3.CATEGORY_DETAIL_LV) b
+on a.PROD_CATEGORY = b.CATEGORY_KEY
+where prod_writer = 'admin'
+order by 
+prod_id desc
+limit 0, 10;
+        
+
+SELECT A1.CATEGORY_PARENT_LV,
+	   A1.CATEGORY_DETAIL_NM,
+	   A2.CATEGORY_DETAIL_NM,
+       A3.CATEGORY_DETAIL_NM,
+       CASE A1.CATEGORY_PARENT_LV
+			WHEN 0 THEN A1.CATEGORY_DETAIL_NM
+            WHEN 1 THEN CONCAT(A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
+            WHEN 2 THEN CONCAT(A3.CATEGORY_DETAIL_NM, '>', A2.CATEGORY_DETAIL_NM, '>', A1.CATEGORY_DETAIL_NM)
+       END AS CATEGORY_NAV,
+       CONCAT(A1.GROUP_ID, A1.CATEGORY_ID) AS CATEGORY_KEY
+FROM PRODUCT_CATEGORY A1
+LEFT JOIN PRODUCT_CATEGORY A2
+ON A1.CATEGORY_PARENT_LV = A2.CATEGORY_LV AND A1.CATEGORY_DETAIL_PARENT_LV = A2.CATEGORY_DETAIL_LV AND A1.GROUP_ID = A2.GROUP_ID
+LEFT JOIN PRODUCT_CATEGORY A3
+ON A2.CATEGORY_PARENT_LV = A3.CATEGORY_LV AND A2.CATEGORY_DETAIL_PARENT_LV = A3.CATEGORY_DETAIL_LV;
+											
+############################파일업로드 테이블############################
+CREATE TABLE PRODUCT_UPLOAD (
+	UPLOAD_NO INT PRIMARY KEY auto_increment,
+	FILENAME varchar(100) not null, ##실제파일명
+	FILEPATH varchar(100) not null, ##폴더명
+	UUID varchar(50) not null, ##UUID명
+	REGDATE TIMESTAMP default now(),
+	PROD_ID INT, ##FK
+	PROD_WRITER VARCHAR(20) ##FK
+);											
