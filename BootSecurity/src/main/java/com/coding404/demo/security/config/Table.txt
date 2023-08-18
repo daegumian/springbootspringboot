@@ -1,0 +1,7 @@
+#시큐리티 회원가입 유저 테이블
+
+create table user(
+username varchar(100) primary key, #ID
+password varchar(100), #PW
+role varchar(50) #권한
+);

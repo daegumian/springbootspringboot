@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="title" content="">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="image" content="">
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<title>Be The Rich</title>
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="lU2qdZVnOq145jkvBUSHDfnz7cUd1jUs0EVQAJi+LyblUQ1KlQHEtKBrFV/zhmFRUesmdZd/O+5LE6obemJmkQ==">
+
+<!-- Main css styles -->
+<link rel="stylesheet" media="all" href="/assets/application-0ff8247ea77d7004d838dabffd2176d996a5432fcf6d167c7d4078a35b7af5cb.css" data-turbolinks-track="reload">
+
+<!-- Main javascript files -->
+<script src="/assets/application-0b4dad89cc362f35fdd09afb7718bfa19f34b931546746b5368afec761a47129.js" data-turbolinks-track="reload"></script>
+
+<!--[if lt IE 9]>
+    <script src="/assets/v2/html5shiv.js"></script>
+<![endif]-->
+</head>
+<body>
+    <!-- SKIP -->
+    <!-- //SKIP -->
+
+    <!-- WRAP -->
+    <div id="wrap">
+        <!-- login -->
+<div id="login">
+    <a href="/"><h1 class="login-logo logo-mo"><img src="https://betherichlab.com/assets/logo/logo-5115ee47806ac09374191826de08919df6b98f95f154b85a863c1fe2e8474b87.svg" alt="로고"></h1></a>
+    <div class="login-slogan-wrap" style="background-image:url(https://betherichlab.com/assets/png/img_login-1b95cdeb8e34ef77e565f48a2a134d8baf667e75de57f2a2e57e431ed0c9b594.jpg)">
+        <div class="login-slogan">
+            <b>BE THE RICH 에 오신 것을<br>환영합니다.</b>
+            <p>내 계정에서 사용하는 가상자산 자동거래 시스템 <br>누구나 쉽고 간편하게 검증된 자동거래 소프트웨어를 사용할 수 있습니다.</p>
+            <div class="solgan-btns">
+                <a href="https://betherich-guide.gitbook.io/betherich-guide/" target="_blank">비더리치 소개</a>
+                <a href="https://open.kakao.com/o/saRvfI8d" target="_blank">문의하기</a>
+            </div>
+        </div>
+    </div>
+    <div class="login-content-wrap" style="width:100%;">
+        <div class="login-content">
+            <h2 class="login-title">로그인</h2>
+            <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off"><input type="hidden" name="authenticity_token" value="lU2qdZVnOq145jkvBUSHDfnz7cUd1jUs0EVQAJi+LyblUQ1KlQHEtKBrFV/zhmFRUesmdZd/O+5LE6obemJmkQ==" autocomplete="off">
+                <div class="login-row form-row">
+                    <label for="email" class="lbl">이메일주소</label>
+                    <div class="row-int">
+                        <input autofocus="autofocus" autocomplete="email" placeholder="이메일 주소를 입력해주세요." class="int" id="id_email" type="email" value="" name="user[email]">
+                        <p class="form-error hide" id="email-error">이메일주소는 필수 항목 입니다.</p>
+                    </div>
+                </div>
+                <div class="login-row form-row">
+                    <label for="password" class="lbl">비밀번호</label>
+                    <div class="row-int int-password">
+                        <input autofocus="autofocus" autocomplete="current-password" placeholder="비밀번호를 입력해주세요." class="int" id="password" type="password" name="user[password]">
+                        <button type="button" class="btn-eye"></button>
+                        <p class="form-error hide" id="password-error">비밀번호가 필요합니다.</p>
+                    </div>
+                </div>
+                <div class="login-row form-row hide" id="otp_field">
+                    <label for="opt1" class="lbl">구글 OTP 인증</label>
+                    <div class="row-int int-otp">
+                        <input type="tel" class="int" maxlength="1" id="opt_num_1" autocomplete="asdasdasd" name="otp[]">
+                        <input type="tel" class="int" maxlength="1" id="opt_num_2" autocomplete="asdasdasd" name="otp[]">
+                        <input type="tel" class="int" maxlength="1" id="opt_num_3" autocomplete="asdasdasd" name="otp[]">
+                        <input type="tel" class="int" maxlength="1" id="opt_num_4" autocomplete="asdasdasd" name="otp[]">
+                        <input type="tel" class="int" maxlength="1" id="opt_num_5" autocomplete="asdasdasd" name="otp[]">
+                        <input type="tel" class="int" maxlength="1" id="opt_num_6" autocomplete="asdasdasd" name="otp[]">
+                    </div>
+                        <p class="form-error hide" id="otp-wrong">OTP 번호가 맞지 않습니다.</p>
+                </div>
+                <!--
+                <div class="form-terms">
+                    <div class="terms-all">
+                        <input type="checkbox" name="terms" id="termsAll" class="checkbox"><label for="termsAll"><span></span> BE THE RICH 의 약관을 읽었으며 이에 동의합니다.</label>
+                    </div>
+                    <hr>
+                    <div class="terms-inner">
+                        <input type="checkbox" name="terms" id="termsOfService" class="checkbox"><label for="termsOfService"><span></span> 이용 약관에 동의합니다.</label>
+                        <a href="#" class="terms-btn">내용보기</a>
+                    </div>
+                    <div class="terms-inner">
+                        <input type="checkbox" name="terms" id="termsOfService2" class="checkbox"><label for="termsOfService2"><span></span> 개인정보 보호정책에 동의합니다.</label>
+                        <a href="#" class="terms-btn">내용보기</a>
+                    </div>
+                </div>
+                -->
+                <div class="login-btn">
+                    <button type="button" id="subMit" class="comm-btn btn-lg" onclick="submitForm()">로그인</button>
+                    <button type="submit" id="btn_login" class="hide"></button>
+                </div>
+                <div class="login-find">
+                    <a href="/users/sign_up">회원가입</a>
+                </div>
+</form>        </div>
+    </div>
+</div>
+<!-- //login -->
+
+
+<form id="form_otp_check" class="hide" action="/users/check_otp" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓" autocomplete="off">
+    <input type="hidden" name="user_email" id="otp_check_user_email">
+    <input type="hidden" name="otp" id="otp_confirm_field">
+    <button type="submit" id="btn_otp_check" class="hide"></button>
+</form>
+<!-- //CONTAINER -->
+
+<script type="text/javascript">
+var otp_checked = false;
+var otp_confirmed = false;
+function submitForm() {
+    if ($("#id_email").val() == "") {
+        $("#email-error").show();
+        return
+    } else {
+        $("#email-error").hide();
+    }
+
+    if ($("#password").val() == "") {
+        $("#password-error").show();
+        return
+    } else {
+        $("#password-error").hide();
+    }
+
+    if (otp_checked == false) {
+        $("#otp_check_user_email").val($("#id_email").val());
+        $("#btn_otp_check").click();
+    } else if (otp_confirmed ==false) {
+        var otp1 = $("#opt_num_1").val();
+        var otp2 = $("#opt_num_2").val();
+        var otp3 = $("#opt_num_3").val();
+        var otp4 = $("#opt_num_4").val();
+        var otp5 = $("#opt_num_5").val();
+        var otp6 = $("#opt_num_6").val();
+
+        $("#otp_confirm_field").val(otp1+otp2+otp3+otp4+otp5+otp6);
+
+        $("#btn_otp_check").click();
+
+    } else {
+        $("#btn_login").click();
+    }
+}
+
+/*------------------------------------------------------
+    OPT 인증
+------------------------------------------------------*/
+$(document).on("keydown", ".int-otp .int", function(e){
+    var key_code = e.keyCode || e.which;
+    if (key_code == 0 || key_code == 229) { //for android chrome keycode fix
+        key_code = getKeyCode(this.value);
+    }
+    if (key_code == 8) {
+        e.preventDefault();
+        this.value = "";
+        
+        if($(this).prev("input").length > 0){
+            $(this).prev().focus();
+            $(this).prev().val("");
+        }
+        return
+    }
+});
+var getKeyCode = function (str) {
+    return str.charCodeAt(str.length - 1);
+}
+$(document).on("keypress keyup keydown", ".int-otp .int", function(e){
+    // console.log(e.which)
+    var key_code = e.keyCode || e.which;
+    if (key_code == 0 || key_code == 229) { //for android chrome keycode fix
+        key_code = getKeyCode(this.value);
+    }
+    if (key_code == 8) {
+        return
+    }
+
+    if(/[a-z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g.test(this.value)){
+        e.preventDefault();
+        this.value = "";
+    } else if (key_code != 8 && key_code != 0
+        && key_code < 48 || key_code > 57 
+        && key_code < 96 || key_code > 105){
+        e.preventDefault();
+        this.value = "";
+    } else if (this.value.length >= this.maxLength){
+        this.value = this.value.slice(0, this.maxLength);
+        if($(this).next("input").length > 0){
+            $(this).next().focus();
+        } else{
+            $(this).blur();
+            submitForm();
+        }
+    }
+});
+$( document ).ready(function() {
+    $('.btn-eye').bind('click', function() {
+        var x = $(this).prev()[0];
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    });
+}); 
+</script>
+
+    </div>
+
+    <script>
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>우리의 로그인페이지 페이지</h3>
+	<h3>여기에 비밀번호를 공개하지 않을 것이다</h3>
+
+	<form action="loginForm" method="post">
+		<input type="text" name="username"> <!-- name값이 username으로 약속되어있따.-->
+		<input type="password" name="password">
+		<input type="checkbox" name="remember-me">나를기억해
+		<input type="submit" value="로그인시도">
+		
+	</form>
+
+	[[${msg}]]
+	
+</body>
+
+<script>
+	
+	//var msg = '[[${msg}]]';
+
+	//if (msg != 'null') {
+		//alert(msg);
+	//}
+	
+	
+</script>
+
+</html>
